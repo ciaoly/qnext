@@ -61,12 +61,12 @@ var Qnext = /** @class */ (function (_super) {
     });
     Qnext.prototype.add = function (task) {
         // 活动队列未满
-        if (this.activeLength !== this.activeLimit) {
+        if (this.activeLength <= this.activeLimit) {
             this._runTask(task);
             return true;
         }
         // 等待队列未满
-        if (this.waitingLength !== this.waitingLimit) {
+        if (this.waitingLength <= this.waitingLimit) {
             this._waitingQueue.push(task); // 加入等待队列末尾
             return true;
         }
